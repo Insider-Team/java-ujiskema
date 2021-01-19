@@ -3,21 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Person;
+package person;
 
 /**
  *
- * @author JackNight
+ * @author HP
  */
-public class Person{
-	protected String nama;
+public class Person {
 
-	public Person(){
-	System.out.println("class parrent PersonPerson");
-	}
+    protected String nama;
 
-	public void infoPerson(){
-	System.out.println("info person");
-	System.out.println("nama : "+this.nama);
-	}
+    public void Person() {
+        System.out.println("ini adalah method utama");
+    }
+
+    public void infoPerson() {
+        System.out.println("Info Personal");
+        System.out.println("nama" + this.nama);
+    }
 }
