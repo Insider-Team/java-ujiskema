@@ -21,7 +21,7 @@ public class Siswa extends Person implements Statistical {
   }
 
   public void inputDataNilaiSiswa() {
-    System.out.print("Input data siswa :")
+    System.out.print("Input data siswa :");
     Scanner ambilData = new Scanner(System.in);
     try {
       System.out.print("Masukan Jumlah Data Yang Ingin Anda Input : ");
@@ -34,8 +34,6 @@ public class Siswa extends Person implements Statistical {
         System.out.println("!...::::::::::::::::::::::::::::::...!");
         System.out.println("Data Siswa Ke : " + (i + 1));
 
-        //Menangani kesalahan dengan tetap memposisikan kursor
-        //di tempat masukan
         boolean statusNIS = false;
         while (!statusNIS) {
           try {
@@ -78,21 +76,19 @@ public class Siswa extends Person implements Statistical {
   public void infoPerson() {
     try {
       System.out.println();
-      System.out.println("!...::::: DATA NILAI SISWA :::::...!");
+      System.out.println("=========== DATA NILAI SISWA ===========");
       System.out.println("Nama Kelas\t : XII Rekayasa Perangkat Lunak");
       System.out.println("Nama Mapel\t : Bahasa Indonesia");
       System.out.println("Bobot Nil UTS\t : 0.4\t Bobot N UAS : 0.6");
 
       System.out.println();
-      System.out.println("-------------------------------------------------------------------------------------------------");
-      System.out.println("|\tNIS\t |" + "\tNAMA\t |" + "\tN.UTS\t |" + "\tN.UAS\t |" + "\tN.Akhir\t |" + "\tN.Huruf" + "\t    |");
-      System.out.println("-------------------------------------------------------------------------------------------------");
+      System.out.println("NIS, " + "Nama, " + "Nilai UTS, " + "Nilai UAS, " + "Nilai Akhir, " + "Keterangan");
       for (Siswa data1: data) {
-        System.out.print("|\t" + data1.NIS + "\t\t" + data1.nama + "\t\t  " + data1.nilUTS + "\t\t  " + data1.nilUAS + "\t\t  " + data1.nilAkhir + "\t\t" + data1.nilHuruf + "\t    |");
+        System.out.print(data1.NIS + ", " + data1.nama + ", " + data1.nilUTS + ", " + data1.nilUAS + ", " + data1.nilAkhir + ", " + data1.nilHuruf);
         System.out.println("");
       }
-      System.out.print("-------------------------------------------------------------------------------------------------");
-      System.out.print("O> Rata - Rata \t: " + nilaiRataRata());
+      System.out.print("========================================");
+      System.out.print("Rata - Rata : " + nilaiRataRata());
       System.out.println("");
     } catch (Exception e) {
       System.out.println("Maaf, data masih kosong!");
@@ -100,34 +96,19 @@ public class Siswa extends Person implements Statistical {
     }
   }
 
-  /**
-   * 
-   * @param nilAkhir 
-   */
   public void setNilAkhir(double nilAkhir) {
     this.nilAkhir = nilAkhir;
   }
 
   public String getNilHuruf() {
     return nilHuruf;
-
   }
 
-  /**
-   * 
-   * @param nilHuruf 
-   */
   public void setNilHuruf(String nilHuruf) {
     this.nilHuruf = nilHuruf;
   }
 
-  /**
-   * 
-   * @param data
-   * @return 
-   */
   public double nilaiRataRata(Siswa data[]) {
-
     return 0;
   }
 
@@ -157,65 +138,9 @@ public class Siswa extends Person implements Statistical {
       } else if (data1.nilAkhir > 70) {
         data1.nilHuruf = "C(CUKUP)";
       } else {
-        // (data[i].nilAkhir <70){
         data1.nilHuruf = "K(KURANG)";
       }
     }
     return nilHuruf;
-  }
-
-  public static void testing() {
-
-  }
-
-  //Mengoverride method sorting untuk pengurutan data nilai siswa
-  @Override
-  public void sortingDataNilaiSiswa() {
-    //Menampilkan data nilai yang sudah diipunkan
-    System.out.println("Nilai Sebelum diurutkan : ");
-    for (Siswa data1: data) {
-      System.out.println(data1.nilAkhir);
-    }
-    System.out.println("");
-
-    System.out.println("Nilai Setelah diurutkan : ");
-    for (int i = 0; i < data.length; i++) {
-      for (int y = 0; y < data.length; y++) {
-        if (i == y) {} else {
-          if (data[i].nilAkhir > data[y].nilAkhir) {
-            double temp = data[y].nilAkhir;
-            data[y].nilAkhir = data[i].nilAkhir;
-            data[i].nilAkhir = temp;
-          }
-        }
-      }
-    }
-    for (Siswa data1: data) {
-      System.out.println(data1.nilAkhir);
-    }
-    System.out.println("");
-    System.out.println("");
-
-  }
-
-  @Override
-  public void searching() {
-    //Menampilkan data nilai yang sudah diipunkan
-    Scanner ambilData = new Scanner(System.in);
-    System.out.print("Masukkan nama pencarian : ");
-    nama = ambilData.next();
-    for (Siswa data1: data) {
-      if (data1.nama == null ? nama == null : data1.nama.equals(nama)) {
-        System.out.println("HASIL PENCARIAN : ");
-        System.out.println("-------------------------------------------------------------------------------------------------");
-        System.out.println("|\tNIS\t |" + "\tNAMA\t |" + "\tN.UTS\t |" + "\tN.UAS\t |" + "\tN.Akhir\t |" + "\tN.Huruf" + "\t    |");
-        System.out.println("-------------------------------------------------------------------------------------------------");
-        System.out.print("|\t" + data1.NIS + "\t\t" + data1.nama + "\t\t  " + data1.nilUTS + "\t\t  " + data1.nilUAS + "\t\t  " + data1.nilAkhir + "\t\t" + data1.nilHuruf + "\t    |");
-        System.out.println("");
-      } else {
-        System.out.println("HASIL TIDAK ADA");
-      }
-    }
-    System.out.println("");
   }
 }
